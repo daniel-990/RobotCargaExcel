@@ -245,8 +245,115 @@ public class Controller {
                 statement.close();
                 workbook.close();
                 connection.close();
-            }
+            }else if(tipoConsulta.equals("sql5")){
+                //excel
+                new File(rutaDefinitivaExcel).mkdirs();
+                //logs
+                String logFolderPath = "/Users/xorroperro/Documents/robotCargaExcel/Logs/";
+                // Creamos la carpeta de logs si no existe
+                new File(logFolderPath).mkdirs();
+                FileHandler fileHandler = new FileHandler(logFolderPath+"logs_"+fechaActual.format(formato)+".txt");
+                SimpleFormatter formatoLogs = new SimpleFormatter();
+                fileHandler.setFormatter(formatoLogs);
+                logger.addHandler(fileHandler);
+                logger.setLevel(java.util.logging.Level.ALL);
 
+                //conexion a la base de datos
+                Connection connection = DriverManager.getConnection(url, user, password);
+                Statement statement = connection.createStatement();
+
+                //ejecutar consultas
+                ResultSet resultSet = statement.executeQuery(parametroConsulta);
+
+                //enviar todos los datos en excel
+                XSSFWorkbook workbook = new XSSFWorkbook();
+                XSSFSheet sheet = workbook.createSheet("Ciudades");
+
+                //se valida que exista el archivo
+                File excelFile = new File(rutaDelExcel);
+                if (excelFile.exists()) {
+                    String acumulador2 = fechaActual.format(formato);
+                    System.out.println("se crea excel con nombre: "+acumulador2);
+                    logger.info("Se ejecuta ROBOT\nse genera el registro de datos\n" +
+                            "se crea excel con nombre: datos_v"+acumulador2+"\n" +
+                            "ruta del archivo guardado: "+rutaDefinitivaExcel+"\n" +
+                            "se termina el proceso");
+                    writeHeaderLine(sheet);
+                    writeDataLines(resultSet, sheet);
+                    FileOutputStream outputStream = new FileOutputStream(rutaDefinitivaExcel+"/datos_v"+acumulador2+".xlsx");
+                    workbook.write(outputStream);
+                } else {
+                    String acumulador3 = fechaActual.format(formato);
+                    System.out.println("se crea el primer documento: "+acumulador3);
+                    logger.info("Segenera el registro de datos\n" +
+                            "se crea excel con nombre: datos_v_1_"+acumulador3+"\n" +
+                            "ruta del archivo guardado: "+rutaDefinitivaExcel+"\n" +
+                            "se termina el proceso");
+                    writeHeaderLine(sheet);
+                    writeDataLines(resultSet, sheet);
+                    FileOutputStream outputStream = new FileOutputStream(rutaDefinitivaExcel+"/datos_v_1_"+acumulador3+".xlsx");
+                    workbook.write(outputStream);
+                }
+                // Cerrar la conexión
+                resultSet.close();
+                statement.close();
+                workbook.close();
+                connection.close();
+            }else if(tipoConsulta.equals("sql6")){
+                //excel
+                new File(rutaDefinitivaExcel).mkdirs();
+                //logs
+                String logFolderPath = "/Users/xorroperro/Documents/robotCargaExcel/Logs/";
+                // Creamos la carpeta de logs si no existe
+                new File(logFolderPath).mkdirs();
+                FileHandler fileHandler = new FileHandler(logFolderPath+"logs_"+fechaActual.format(formato)+".txt");
+                SimpleFormatter formatoLogs = new SimpleFormatter();
+                fileHandler.setFormatter(formatoLogs);
+                logger.addHandler(fileHandler);
+                logger.setLevel(java.util.logging.Level.ALL);
+
+                //conexion a la base de datos
+                Connection connection = DriverManager.getConnection(url, user, password);
+                Statement statement = connection.createStatement();
+
+                //ejecutar consultas
+                ResultSet resultSet = statement.executeQuery(parametroConsulta);
+
+                //enviar todos los datos en excel
+                XSSFWorkbook workbook = new XSSFWorkbook();
+                XSSFSheet sheet = workbook.createSheet("Ciudades");
+
+                //se valida que exista el archivo
+                File excelFile = new File(rutaDelExcel);
+                if (excelFile.exists()) {
+                    String acumulador2 = fechaActual.format(formato);
+                    System.out.println("se crea excel con nombre: "+acumulador2);
+                    logger.info("Se ejecuta ROBOT\nse genera el registro de datos\n" +
+                            "se crea excel con nombre: datos_v"+acumulador2+"\n" +
+                            "ruta del archivo guardado: "+rutaDefinitivaExcel+"\n" +
+                            "se termina el proceso");
+                    writeHeaderLine(sheet);
+                    writeDataLines(resultSet, sheet);
+                    FileOutputStream outputStream = new FileOutputStream(rutaDefinitivaExcel+"/datos_v"+acumulador2+".xlsx");
+                    workbook.write(outputStream);
+                } else {
+                    String acumulador3 = fechaActual.format(formato);
+                    System.out.println("se crea el primer documento: "+acumulador3);
+                    logger.info("Segenera el registro de datos\n" +
+                            "se crea excel con nombre: datos_v_1_"+acumulador3+"\n" +
+                            "ruta del archivo guardado: "+rutaDefinitivaExcel+"\n" +
+                            "se termina el proceso");
+                    writeHeaderLine(sheet);
+                    writeDataLines(resultSet, sheet);
+                    FileOutputStream outputStream = new FileOutputStream(rutaDefinitivaExcel+"/datos_v_1_"+acumulador3+".xlsx");
+                    workbook.write(outputStream);
+                }
+                // Cerrar la conexión
+                resultSet.close();
+                statement.close();
+                workbook.close();
+                connection.close();
+            }
         } catch (SQLException e) {
             e.printStackTrace();
             logger.severe("error:" +e);

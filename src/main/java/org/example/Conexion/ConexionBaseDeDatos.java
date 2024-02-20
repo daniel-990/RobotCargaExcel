@@ -25,20 +25,15 @@ public class ConexionBaseDeDatos {
             String password = properties.getProperty("database.password");
 
             //consultas
-            String consulta1 = properties.getProperty("consulta1"); //--> consulta de pruebas
+            String consulta1 = properties.getProperty("consulta1"); //--> consultas
             String consulta2 = properties.getProperty("consulta2");
             String consulta3 = properties.getProperty("consulta3");
             String consulta4 = properties.getProperty("consulta4");
-            //consultas reales
-            String sql1 = properties.getProperty("sql1");
-            String sql2 = properties.getProperty("sql2");
-            String sql3 = properties.getProperty("sql3");
-            String sql4 = properties.getProperty("sql4");
-            String sql5 = properties.getProperty("sql5");
-            String sql6 = properties.getProperty("sql6");
+            String consulta5 = properties.getProperty("consulta5");
+            String consulta6 = properties.getProperty("consulta6");
 
             //ejecutar conexion
-            ejecutarConexion("","",consulta4,consulta3,consulta2,consulta1,url,user,password);
+            ejecutarConexion(consulta6,consulta5,consulta4,consulta3,consulta2,consulta1,url,user,password);
 
         } catch (IOException e) {
             System.err.println("Error al leer el archivo de propiedades: " + e.getMessage());
@@ -61,6 +56,8 @@ public class ConexionBaseDeDatos {
                 ejecutar.ejecutarConsulta1("sql2",consulta2,url, usuario, contrasena);
                 ejecutar.ejecutarConsulta1("sql3",consulta3,url, usuario, contrasena);
                 ejecutar.ejecutarConsulta1("sql4",consulta4,url, usuario, contrasena);
+                ejecutar.ejecutarConsulta1("sql5",consulta5,url, usuario, contrasena);
+                ejecutar.ejecutarConsulta1("sql6",consulta6,url, usuario, contrasena);
             }
         } catch (SQLException e) {
             System.err.println("Error al conectar a la base de datos: " + e.getMessage());
