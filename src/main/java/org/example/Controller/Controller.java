@@ -14,6 +14,10 @@ import java.util.logging.FileHandler;
 import java.util.logging.Logger;
 import java.util.logging.SimpleFormatter;
 
+/*
+    Daniel Arango Villegas
+* */
+
 public class Controller {
     //ruta del archivo
     String rutaDelExcel;

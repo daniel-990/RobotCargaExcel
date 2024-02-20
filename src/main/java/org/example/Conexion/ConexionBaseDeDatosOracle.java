@@ -9,6 +9,10 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.Properties;
 
+/*
+    Daniel Arango Villegas
+* */
+
 public class ConexionBaseDeDatosOracle {
     Properties properties = new Properties();
     String ruta = "/Users/xorroperro/Documents/robotCargaExcel/Config/Config.properties";

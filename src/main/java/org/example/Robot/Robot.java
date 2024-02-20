@@ -5,6 +5,11 @@ import org.example.Conexion.ConexionBaseDeDatosOracle;
 import java.util.Calendar;
 import java.util.Timer;
 import java.util.TimerTask;
+
+/*
+    Daniel Arango Villegas
+* */
+
 public class Robot {
     Timer timer = new Timer();
     public void ejecutarFechaRobot(int hora, int minuto, int dia){

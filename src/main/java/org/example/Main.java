@@ -1,10 +1,12 @@
 package org.example;
-
 import org.example.Robot.Robot;
-
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Properties;
+
+/*
+    Daniel Arango Villegas
+* */
 
 public class Main {
     public static void main(String[] args) {

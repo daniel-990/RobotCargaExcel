@@ -10,6 +10,10 @@ import java.sql.SQLException;
 import java.util.Properties;
 import java.util.Scanner;
 
+/*
+    Daniel Arango Villegas
+* */
+
 public class ConexionBaseDeDatos {
     Properties properties = new Properties();
     String ruta = "/Users/xorroperro/Documents/robotCargaExcel/Config/Config.properties";
