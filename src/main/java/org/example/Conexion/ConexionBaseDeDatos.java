@@ -11,8 +11,6 @@ import java.util.Properties;
 import java.util.Scanner;
 
 public class ConexionBaseDeDatos {
-
-    Scanner input = new Scanner(System.in);
     Properties properties = new Properties();
     String ruta = "/Users/xorroperro/Documents/robotCargaExcel/Config/Config.properties";
     public void dataBase(){
