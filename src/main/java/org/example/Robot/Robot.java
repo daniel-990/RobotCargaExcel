@@ -1,6 +1,5 @@
 package org.example.Robot;
 import org.example.Conexion.ConexionBaseDeDatos;
-import org.example.Conexion.ConexionBaseDeDatosOracle;
 
 import java.util.Calendar;
 import java.util.Timer;
@@ -25,10 +24,8 @@ class RobotTarea extends TimerTask {
     @Override
     public void run() {
         // se ejecuta la descarga de datos
-        //ConexionBaseDeDatos conectar = new ConexionBaseDeDatos();
-        ConexionBaseDeDatosOracle conectar = new ConexionBaseDeDatosOracle();
+        ConexionBaseDeDatos conectar = new ConexionBaseDeDatos();
         //ejecutar
-        //conectar.dataBase();
-        conectar.dataBaseOracle();
+        conectar.dataBase();
     }
 }
