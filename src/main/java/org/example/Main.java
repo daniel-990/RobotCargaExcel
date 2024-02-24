@@ -12,7 +12,7 @@ public class Main {
     public static void main(String[] args) {
         Robot robot = new Robot();
         Properties properties = new Properties();
-        String ruta = "/Users/xorroperro/Documents/robotCargaExcel/Config/Config.properties";
+        String ruta = "C:\\Users\\SSSA\\Documents\\NetBeansProjects\\RobotDescargaExcelDb\\Config\\Config.properties";
 
         try (FileInputStream fis = new FileInputStream(ruta)) {
             properties.load(fis);

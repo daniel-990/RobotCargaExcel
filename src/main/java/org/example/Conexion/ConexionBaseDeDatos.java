@@ -13,7 +13,7 @@ import java.util.Properties;
 
 public class ConexionBaseDeDatos {
     Properties properties = new Properties();
-    String ruta = "/Users/xorroperro/Documents/robotCargaExcel/Config/Config.properties";
+    String ruta = "C:\\Users\\SSSA\\Documents\\NetBeansProjects\\RobotDescargaExcelDb\\Config\\Config.properties";
     private static String url;
     private static String user;
     private static String pass;
@@ -30,10 +30,21 @@ public class ConexionBaseDeDatos {
             properties.load(fis);
 
             // Obtener propiedades
-            url = properties.getProperty("database.url");
-            user = properties.getProperty("database.user");
-            pass = properties.getProperty("database.password");
             int tipoConexion = Integer.parseInt(properties.getProperty("tipoConexion"));
+
+            if(tipoConexion == 1){
+                url = properties.getProperty("database.url");
+                user = properties.getProperty("database.user");
+                pass = properties.getProperty("database.password");
+            }else if(tipoConexion == 2){
+                url = properties.getProperty("database.url_o");
+                user = properties.getProperty("database.user_o");
+                pass = properties.getProperty("database.password_o");
+            }else{
+                url = properties.getProperty("database.url_s");
+                user = properties.getProperty("database.user_s");
+                pass = properties.getProperty("database.password_s");
+            }
 
             //consultas
             consulta1 = properties.getProperty("consulta1"); //--> consultas
@@ -105,19 +116,10 @@ public class ConexionBaseDeDatos {
             } else {
                 System.out.println("No se pudo establecer la conexión.");
             }
-        } catch (ClassNotFoundException e) {
-            System.out.println("Error al cargar el controlador JDBC: " + e.getMessage());
         } catch (SQLException e) {
             System.out.println("Error al conectar a la base de datos: " + e.getMessage());
-        } finally {
-            // Cerrar la conexión
-            if (conn != null) {
-                try {
-                    conn.close();
-                } catch (SQLException e) {
-                    System.out.println("Error al cerrar la conexión: " + e.getMessage());
-                }
-            }
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
         }
     }
 

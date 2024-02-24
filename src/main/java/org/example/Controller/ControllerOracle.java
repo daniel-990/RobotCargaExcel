@@ -24,11 +24,10 @@ public class ControllerOracle {
     String logFolderPath;
     String logFolderPathDefinitiva;
     String nombrePestana;
-    int tipoConexion;
     Properties properties = new Properties();
     LocalDateTime fechaActual = LocalDateTime.now();
     DateTimeFormatter formato = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
-    String ruta = "/Users/xorroperro/Documents/robotCargaExcel/Config/Config.properties";
+    String ruta = "C:\\Users\\SSSA\\Documents\\NetBeansProjects\\RobotDescargaExcelDb\\Config\\Config.properties";
     Logger logger = Logger.getLogger("MiRobotLoger");
 
     Connection conn = null;
@@ -63,7 +62,7 @@ public class ControllerOracle {
 
                 //ejecutar consultas
                 conn = DriverManager.getConnection(url, user, password);
-                stmt = conn.createStatement();
+                stmt = conn.prepareStatement(parametroConsulta);
                 rs = stmt.executeQuery(parametroConsulta);
 
                 //se valida que exista el archivo
@@ -109,10 +108,9 @@ public class ControllerOracle {
                 logger.addHandler(fileHandler);
                 logger.setLevel(java.util.logging.Level.ALL);
 
-                //conexion a la base de datos
-                conn = DriverManager.getConnection(url, user, password);
-                stmt = conn.createStatement();
                 //ejecutar consultas
+                conn = DriverManager.getConnection(url, user, password);
+                stmt = conn.prepareStatement(parametroConsulta);
                 rs = stmt.executeQuery(parametroConsulta);
 
                 //se valida que exista el archivo
@@ -158,10 +156,9 @@ public class ControllerOracle {
                 logger.addHandler(fileHandler);
                 logger.setLevel(java.util.logging.Level.ALL);
 
-                //conexion a la base de datos
-                conn = DriverManager.getConnection(url, user, password);
-                stmt = conn.createStatement();
                 //ejecutar consultas
+                conn = DriverManager.getConnection(url, user, password);
+                stmt = conn.prepareStatement(parametroConsulta);
                 rs = stmt.executeQuery(parametroConsulta);
 
                 //se valida que exista el archivo
@@ -207,10 +204,9 @@ public class ControllerOracle {
                 logger.addHandler(fileHandler);
                 logger.setLevel(java.util.logging.Level.ALL);
 
-                //conexion a la base de datos
-                conn = DriverManager.getConnection(url, user, password);
-                stmt = conn.createStatement();
                 //ejecutar consultas
+                conn = DriverManager.getConnection(url, user, password);
+                stmt = conn.prepareStatement(parametroConsulta);
                 rs = stmt.executeQuery(parametroConsulta);
 
                 //se valida que exista el archivo
@@ -256,10 +252,9 @@ public class ControllerOracle {
                 logger.addHandler(fileHandler);
                 logger.setLevel(java.util.logging.Level.ALL);
 
-                //conexion a la base de datos
-                conn = DriverManager.getConnection(url, user, password);
-                stmt = conn.createStatement();
                 //ejecutar consultas
+                conn = DriverManager.getConnection(url, user, password);
+                stmt = conn.prepareStatement(parametroConsulta);
                 rs = stmt.executeQuery(parametroConsulta);
 
                 //se valida que exista el archivo
@@ -305,10 +300,9 @@ public class ControllerOracle {
                 logger.addHandler(fileHandler);
                 logger.setLevel(java.util.logging.Level.ALL);
 
-                //conexion a la base de datos
-                conn = DriverManager.getConnection(url, user, password);
-                stmt = conn.createStatement();
                 //ejecutar consultas
+                conn = DriverManager.getConnection(url, user, password);
+                stmt = conn.prepareStatement(parametroConsulta);
                 rs = stmt.executeQuery(parametroConsulta);
 
                 //se valida que exista el archivo
