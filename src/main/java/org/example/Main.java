@@ -1,4 +1,5 @@
 package org.example;
+import org.example.Model.DatosModel;
 import org.example.Robot.Robot;
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -12,7 +13,8 @@ public class Main {
     public static void main(String[] args) {
         Robot robot = new Robot();
         Properties properties = new Properties();
-        String ruta = "C:\\Users\\SSSA\\Documents\\NetBeansProjects\\RobotDescargaExcelDb\\Config\\Config.properties";
+        DatosModel datosModel = new DatosModel();
+        String ruta = datosModel.getRuta();
 
         try (FileInputStream fis = new FileInputStream(ruta)) {
             properties.load(fis);

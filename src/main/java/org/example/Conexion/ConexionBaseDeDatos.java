@@ -1,6 +1,7 @@
 package org.example.Conexion;
 import org.example.Controller.ControllerMysql;
 import org.example.Controller.ControllerOracle;
+import org.example.Model.DatosModel;
 
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -13,7 +14,9 @@ import java.util.Properties;
 
 public class ConexionBaseDeDatos {
     Properties properties = new Properties();
-    String ruta = "C:\\Users\\SSSA\\Documents\\NetBeansProjects\\RobotDescargaExcelDb\\Config\\Config.properties";
+    DatosModel datosModel = new DatosModel();
+    //String ruta = "C:\\Users\\SSSA\\Documents\\NetBeansProjects\\RobotDescargaExcelDb\\Config\\Config.properties";
+    String ruta = datosModel.getRuta();
     private static String url;
     private static String user;
     private static String pass;

@@ -4,6 +4,7 @@ import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.example.Model.DatosModel;
 
 import java.io.*;
 import java.sql.*;
@@ -26,9 +27,11 @@ public class ControllerMysql {
     String logFolderPathDefinitiva;
     String nombrePestana;
     Properties properties = new Properties();
+    DatosModel datosModel = new DatosModel();
     LocalDateTime fechaActual = LocalDateTime.now();
-    DateTimeFormatter formato = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
-    String ruta = "C:\\Users\\SSSA\\Documents\\NetBeansProjects\\RobotDescargaExcelDb\\Config\\Config.properties";
+    DateTimeFormatter formato = DateTimeFormatter.ofPattern("yyyy-MM-dd HH-mm-ss");
+    //String ruta = "C:\\Users\\SSSA\\Documents\\NetBeansProjects\\RobotDescargaExcelDb\\Config\\Config.properties";
+    String ruta = datosModel.getRuta();
     Logger logger = Logger.getLogger("MiRobotLoger");
 
     Connection conn = null;
@@ -75,7 +78,7 @@ public class ControllerMysql {
                             "se crea excel con nombre: datos_v"+acumulador2+"\n" +
                             "ruta del archivo guardado: "+rutaDefinitivaExcel+"\n" +
                             "se termina el proceso");
-                    writeHeaderLine(sheet);
+                    writeHeaderLine(sheet,tipoConsulta);
                     writeDataLines(rs, sheet);
                     FileOutputStream outputStream = new FileOutputStream(rutaDefinitivaExcel+"/datos_v"+acumulador2+".xlsx");
                     workbook.write(outputStream);
@@ -86,7 +89,7 @@ public class ControllerMysql {
                             "se crea excel con nombre: datos_v_1_"+acumulador3+"\n" +
                             "ruta del archivo guardado: "+rutaDefinitivaExcel+"\n" +
                             "se termina el proceso");
-                    writeHeaderLine(sheet);
+                    writeHeaderLine(sheet,tipoConsulta); //consulta 1
                     writeDataLines(rs, sheet);
                     FileOutputStream outputStream = new FileOutputStream(rutaDefinitivaExcel+"/datos_v_1_"+acumulador3+".xlsx");
                     workbook.write(outputStream);
@@ -124,7 +127,7 @@ public class ControllerMysql {
                             "se crea excel con nombre: datos_v"+acumulador2+"\n" +
                             "ruta del archivo guardado: "+rutaDefinitivaExcel+"\n" +
                             "se termina el proceso");
-                    writeHeaderLine(sheet);
+                    writeHeaderLine(sheet,tipoConsulta);
                     writeDataLines(rs, sheet);
                     FileOutputStream outputStream = new FileOutputStream(rutaDefinitivaExcel+"/datos_v"+acumulador2+".xlsx");
                     workbook.write(outputStream);
@@ -135,7 +138,7 @@ public class ControllerMysql {
                             "se crea excel con nombre: datos_v_1_"+acumulador3+"\n" +
                             "ruta del archivo guardado: "+rutaDefinitivaExcel+"\n" +
                             "se termina el proceso");
-                    writeHeaderLine(sheet);
+                    writeHeaderLine(sheet,tipoConsulta);
                     writeDataLines(rs, sheet);
                     FileOutputStream outputStream = new FileOutputStream(rutaDefinitivaExcel+"/datos_v_1_"+acumulador3+".xlsx");
                     workbook.write(outputStream);
@@ -173,7 +176,7 @@ public class ControllerMysql {
                             "se crea excel con nombre: datos_v"+acumulador2+"\n" +
                             "ruta del archivo guardado: "+rutaDefinitivaExcel+"\n" +
                             "se termina el proceso");
-                    writeHeaderLine(sheet);
+                    writeHeaderLine(sheet,tipoConsulta);
                     writeDataLines(rs, sheet);
                     FileOutputStream outputStream = new FileOutputStream(rutaDefinitivaExcel+"/datos_v"+acumulador2+".xlsx");
                     workbook.write(outputStream);
@@ -184,7 +187,7 @@ public class ControllerMysql {
                             "se crea excel con nombre: datos_v_1_"+acumulador3+"\n" +
                             "ruta del archivo guardado: "+rutaDefinitivaExcel+"\n" +
                             "se termina el proceso");
-                    writeHeaderLine(sheet);
+                    writeHeaderLine(sheet,tipoConsulta);
                     writeDataLines(rs, sheet);
                     FileOutputStream outputStream = new FileOutputStream(rutaDefinitivaExcel+"/datos_v_1_"+acumulador3+".xlsx");
                     workbook.write(outputStream);
@@ -222,7 +225,7 @@ public class ControllerMysql {
                             "se crea excel con nombre: datos_v"+acumulador2+"\n" +
                             "ruta del archivo guardado: "+rutaDefinitivaExcel+"\n" +
                             "se termina el proceso");
-                    writeHeaderLine(sheet);
+                    writeHeaderLine(sheet,tipoConsulta);
                     writeDataLines(rs, sheet);
                     FileOutputStream outputStream = new FileOutputStream(rutaDefinitivaExcel+"/datos_v"+acumulador2+".xlsx");
                     workbook.write(outputStream);
@@ -233,7 +236,7 @@ public class ControllerMysql {
                             "se crea excel con nombre: datos_v_1_"+acumulador3+"\n" +
                             "ruta del archivo guardado: "+rutaDefinitivaExcel+"\n" +
                             "se termina el proceso");
-                    writeHeaderLine(sheet);
+                    writeHeaderLine(sheet,tipoConsulta);
                     writeDataLines(rs, sheet);
                     FileOutputStream outputStream = new FileOutputStream(rutaDefinitivaExcel+"/datos_v_1_"+acumulador3+".xlsx");
                     workbook.write(outputStream);
@@ -271,7 +274,7 @@ public class ControllerMysql {
                             "se crea excel con nombre: datos_v"+acumulador2+"\n" +
                             "ruta del archivo guardado: "+rutaDefinitivaExcel+"\n" +
                             "se termina el proceso");
-                    writeHeaderLine(sheet);
+                    writeHeaderLine(sheet,tipoConsulta);
                     writeDataLines(rs, sheet);
                     FileOutputStream outputStream = new FileOutputStream(rutaDefinitivaExcel+"/datos_v"+acumulador2+".xlsx");
                     workbook.write(outputStream);
@@ -282,7 +285,7 @@ public class ControllerMysql {
                             "se crea excel con nombre: datos_v_1_"+acumulador3+"\n" +
                             "ruta del archivo guardado: "+rutaDefinitivaExcel+"\n" +
                             "se termina el proceso");
-                    writeHeaderLine(sheet);
+                    writeHeaderLine(sheet,tipoConsulta);
                     writeDataLines(rs, sheet);
                     FileOutputStream outputStream = new FileOutputStream(rutaDefinitivaExcel+"/datos_v_1_"+acumulador3+".xlsx");
                     workbook.write(outputStream);
@@ -320,7 +323,7 @@ public class ControllerMysql {
                             "se crea excel con nombre: datos_v"+acumulador2+"\n" +
                             "ruta del archivo guardado: "+rutaDefinitivaExcel+"\n" +
                             "se termina el proceso");
-                    writeHeaderLine(sheet);
+                    writeHeaderLine(sheet,tipoConsulta);
                     writeDataLines(rs, sheet);
                     FileOutputStream outputStream = new FileOutputStream(rutaDefinitivaExcel+"/datos_v"+acumulador2+".xlsx");
                     workbook.write(outputStream);
@@ -331,7 +334,7 @@ public class ControllerMysql {
                             "se crea excel con nombre: datos_v_1_"+acumulador3+"\n" +
                             "ruta del archivo guardado: "+rutaDefinitivaExcel+"\n" +
                             "se termina el proceso");
-                    writeHeaderLine(sheet);
+                    writeHeaderLine(sheet,tipoConsulta);
                     writeDataLines(rs, sheet);
                     FileOutputStream outputStream = new FileOutputStream(rutaDefinitivaExcel+"/datos_v_1_"+acumulador3+".xlsx");
                     workbook.write(outputStream);
@@ -354,20 +357,208 @@ public class ControllerMysql {
         }
     }
 
-    private static void writeHeaderLine(XSSFSheet sheet) {
+    private static void writeHeaderLine(XSSFSheet sheet, String tipoRow) {
         Row headerRow = sheet.createRow(0);
-
         Cell headerCell = headerRow.createCell(0);
-        headerCell.setCellValue("ID");
+        switch (tipoRow) {
+            case "sql1":
+                headerCell.setCellValue("Item0");
+                headerCell = headerRow.createCell(1);
+                headerCell.setCellValue("Item1");
+                headerCell = headerRow.createCell(2);
+                headerCell.setCellValue("Item2");
+                headerCell = headerRow.createCell(3);
+                headerCell.setCellValue("Item3");
+                headerCell = headerRow.createCell(4);
+                headerCell.setCellValue("Item4");
+                break;
+            case "sql2":
+                headerCell.setCellValue("Item0");
+                headerCell = headerRow.createCell(1);
+                headerCell.setCellValue("Item1");
+                headerCell = headerRow.createCell(2);
+                headerCell.setCellValue("Item2");
+                headerCell = headerRow.createCell(3);
+                headerCell.setCellValue("Item3");
+                headerCell = headerRow.createCell(4);
+                headerCell.setCellValue("Item4");
+                headerCell = headerRow.createCell(5);
+                headerCell.setCellValue("Item5");
+                headerCell = headerRow.createCell(6);
+                headerCell.setCellValue("Item6");
+                headerCell = headerRow.createCell(7);
+                headerCell.setCellValue("Item7");
+                headerCell = headerRow.createCell(8);
+                headerCell.setCellValue("Item8");
+                headerCell = headerRow.createCell(9);
+                headerCell.setCellValue("Item9");
+                headerCell = headerRow.createCell(10);
+                headerCell.setCellValue("Item10");
+                headerCell = headerRow.createCell(11);
+                headerCell.setCellValue("Item11");
+                headerCell = headerRow.createCell(12);
+                headerCell.setCellValue("Item12");
+                headerCell = headerRow.createCell(13);
+                headerCell.setCellValue("Item13");
+                headerCell = headerRow.createCell(14);
+                headerCell.setCellValue("Item14");
+                headerCell = headerRow.createCell(15);
+                headerCell.setCellValue("Item15");
+                headerCell = headerRow.createCell(16);
+                headerCell.setCellValue("Item16");
+                headerCell = headerRow.createCell(17);
+                headerCell.setCellValue("Item17");
+                headerCell = headerRow.createCell(18);
+                headerCell.setCellValue("Item18");
+                headerCell = headerRow.createCell(19);
+                headerCell.setCellValue("Item19");
+                headerCell = headerRow.createCell(20);
+                headerCell.setCellValue("Item20");
+                headerCell = headerRow.createCell(21);
+                headerCell.setCellValue("Item21");
+                headerCell = headerRow.createCell(22);
+                headerCell.setCellValue("Item22");
+                headerCell = headerRow.createCell(23);
+                headerCell.setCellValue("Item23");
+                headerCell = headerRow.createCell(24);
+                headerCell.setCellValue("Item24");
+                headerCell = headerRow.createCell(25);
+                headerCell.setCellValue("Item25");
+                headerCell = headerRow.createCell(26);
+                headerCell.setCellValue("Item26");
+                headerCell = headerRow.createCell(27);
+                headerCell.setCellValue("Item27");
+                headerCell = headerRow.createCell(28);
+                headerCell.setCellValue("Item28");
+                headerCell = headerRow.createCell(29);
+                headerCell.setCellValue("Item29");
+                break;
+            case "sql3":
+                headerCell.setCellValue("Item0");
+                headerCell = headerRow.createCell(1);
+                headerCell.setCellValue("Item1");
+                headerCell = headerRow.createCell(2);
+                headerCell.setCellValue("Item2");
+                headerCell = headerRow.createCell(3);
+                headerCell.setCellValue("Item3");
+                headerCell = headerRow.createCell(4);
+                headerCell.setCellValue("Item4");
+                headerCell = headerRow.createCell(5);
+                headerCell.setCellValue("Item5");
+                headerCell = headerRow.createCell(6);
+                headerCell.setCellValue("Item6");
+                headerCell = headerRow.createCell(7);
+                headerCell.setCellValue("Item7");
+                headerCell = headerRow.createCell(8);
+                headerCell.setCellValue("Item8");
+                headerCell = headerRow.createCell(9);
+                headerCell.setCellValue("Item9");
+                headerCell = headerRow.createCell(10);
+                headerCell.setCellValue("Item10");
+                headerCell = headerRow.createCell(11);
+                headerCell.setCellValue("Item11");
+                headerCell = headerRow.createCell(12);
+                headerCell.setCellValue("Item12");
+                headerCell = headerRow.createCell(13);
+                headerCell.setCellValue("Item13");
+                headerCell = headerRow.createCell(14);
+                headerCell.setCellValue("Item14");
+                headerCell = headerRow.createCell(15);
+                headerCell.setCellValue("Item15");
+                headerCell = headerRow.createCell(16);
+                headerCell.setCellValue("Item16");
+                headerCell = headerRow.createCell(17);
+                headerCell.setCellValue("Item17");
+                headerCell = headerRow.createCell(18);
+                headerCell.setCellValue("Item18");
+                headerCell = headerRow.createCell(19);
+                headerCell.setCellValue("Item19");
+                headerCell = headerRow.createCell(20);
+                headerCell.setCellValue("Item20");
+                headerCell = headerRow.createCell(21);
+                headerCell.setCellValue("Item21");
+                break;
+            case "sql4":
+                headerCell.setCellValue("Item0");
+                headerCell = headerRow.createCell(1);
+                headerCell.setCellValue("Item1");
+                headerCell = headerRow.createCell(2);
+                headerCell.setCellValue("Item2");
+                headerCell = headerRow.createCell(3);
+                headerCell.setCellValue("Item3");
+                headerCell = headerRow.createCell(4);
+                headerCell.setCellValue("Item4");
+                headerCell = headerRow.createCell(5);
+                headerCell.setCellValue("Item5");
+                headerCell = headerRow.createCell(6);
+                headerCell.setCellValue("Item6");
+                headerCell = headerRow.createCell(7);
+                headerCell.setCellValue("Item7");
+                headerCell = headerRow.createCell(8);
+                headerCell.setCellValue("Item8");
+                headerCell = headerRow.createCell(9);
+                headerCell.setCellValue("Item9");
+                headerCell = headerRow.createCell(10);
+                headerCell.setCellValue("Item10");
+                headerCell = headerRow.createCell(11);
+                headerCell.setCellValue("Item11");
+                headerCell = headerRow.createCell(12);
+                headerCell.setCellValue("Item12");
+                headerCell = headerRow.createCell(13);
+                headerCell.setCellValue("Item13");
+                headerCell = headerRow.createCell(14);
+                headerCell.setCellValue("Item14");
+                headerCell = headerRow.createCell(15);
+                headerCell.setCellValue("Item15");
+                headerCell = headerRow.createCell(16);
+                headerCell.setCellValue("Item16");
+                headerCell = headerRow.createCell(17);
+                headerCell.setCellValue("Item17");
+                headerCell = headerRow.createCell(18);
+                headerCell.setCellValue("Item18");
+                headerCell = headerRow.createCell(19);
+                headerCell.setCellValue("Item19");
+                headerCell = headerRow.createCell(20);
+                headerCell.setCellValue("Item20");
+                headerCell = headerRow.createCell(21);
+                headerCell.setCellValue("Item21");
+                break;
+            case "sql5":
+                headerCell.setCellValue("Item0");
+                headerCell = headerRow.createCell(1);
+                headerCell.setCellValue("Item1");
+                headerCell = headerRow.createCell(2);
+                headerCell.setCellValue("Item2");
+                headerCell = headerRow.createCell(3);
+                headerCell.setCellValue("Item3");
+                headerCell = headerRow.createCell(4);
+                headerCell.setCellValue("Item4");
+                headerCell = headerRow.createCell(5);
+                headerCell.setCellValue("Item5");
+                headerCell = headerRow.createCell(6);
+                headerCell.setCellValue("Item6");
+                headerCell = headerRow.createCell(7);
+                headerCell.setCellValue("Item7");
+                headerCell = headerRow.createCell(8);
+                headerCell.setCellValue("Item8");
+                headerCell = headerRow.createCell(9);
+                headerCell.setCellValue("Item9");
+                break;
+            case "sql6":
+                headerCell.setCellValue("ID");
 
-        headerCell = headerRow.createCell(1);
-        headerCell.setCellValue("Nombre");
+                headerCell = headerRow.createCell(1);
+                headerCell.setCellValue("Item1");
 
-        headerCell = headerRow.createCell(2);
-        headerCell.setCellValue("País");
+                headerCell = headerRow.createCell(2);
+                headerCell.setCellValue("Item2");
 
-        headerCell = headerRow.createCell(3);
-        headerCell.setCellValue("Población");
+                headerCell = headerRow.createCell(3);
+                headerCell.setCellValue("Item4");
+                break;
+            default:
+                System.out.println("no hay lugar para el excel");
+        }
     }
 
     private static void writeDataLines(ResultSet result, XSSFSheet sheet) throws Exception {
@@ -379,10 +570,9 @@ public class ControllerMysql {
             String country = result.getString("CountryCode");
             int population = result.getInt("Population");
 
-            Row row = sheet.createRow(rowNumber++);
-
             int columnNumber = 0;
 
+            Row row = sheet.createRow(rowNumber++);
             Cell cell = row.createCell(columnNumber++);
             cell.setCellValue(id);
 
